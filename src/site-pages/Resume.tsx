@@ -1,3 +1,4 @@
+import { BrandMark } from "../components/BrandMark";
 import { Download } from "lucide-react";
 import { resume } from "../data/resume";
 import { profile } from "../data/profile";
@@ -11,7 +12,7 @@ export default function Resume() {
       />
       <div className="resume-layout">
         <aside className="resume-sidebar">
-          <img src="/brand/mark.webp" alt="" />
+          <BrandMark />
           <h2>
             Gustavo
             <br />

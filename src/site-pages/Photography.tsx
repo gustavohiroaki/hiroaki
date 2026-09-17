@@ -63,7 +63,7 @@ export default function Photography() {
           {String(filtered.length).padStart(2, "0")} fotografias
         </span>
       </div>
-      <div className="photo-gallery">
+      <div className="photo-gallery" key={filter}>
         {filtered.map((p, i) => (
           <Reveal key={p.id} className={`gallery-item gallery-item-${i % 5}`}>
             <button
@@ -132,7 +132,7 @@ export default function Photography() {
             >
               <X />
             </button>
-            <div className="lightbox-image">
+            <div className="lightbox-image" key={selected.id}>
               <img src={selected.image} alt={selected.alt} />
             </div>
             <div className="lightbox-bottom">

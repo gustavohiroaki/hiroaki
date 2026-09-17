@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080" role="img" aria-labelledby="title">
+<title id="title">Logo geométrica azul — animação de desenho</title>
+<style>@keyframes cycle{0%,78%{opacity:1}92%,100%{opacity:0}} .mark{animation:cycle 6s linear infinite;}@keyframes draw0{0%,2.5000%{stroke-dashoffset:1}37.5000%,100%{stroke-dashoffset:0}} .p0{stroke-dasharray:1;stroke-dashoffset:0;animation:draw0 6s linear infinite;}@keyframes draw1{0%,9.1667%{stroke-dashoffset:1}45.0000%,100%{stroke-dashoffset:0}} .p1{stroke-dasharray:1;stroke-dashoffset:0;animation:draw1 6s linear infinite;}@keyframes draw2{0%,13.3333%{stroke-dashoffset:1}49.1667%,100%{stroke-dashoffset:0}} .p2{stroke-dasharray:1;stroke-dashoffset:0;animation:draw2 6s linear infinite;}@keyframes draw3{0%,35.0000%{stroke-dashoffset:1}48.3333%,100%{stroke-dashoffset:0}} .p3{stroke-dasharray:1;stroke-dashoffset:0;animation:draw3 6s linear infinite;}@keyframes draw4{0%,37.5000%{stroke-dashoffset:1}51.6667%,100%{stroke-dashoffset:0}} .p4{stroke-dasharray:1;stroke-dashoffset:0;animation:draw4 6s linear infinite;}@keyframes draw5{0%,6.6667%{stroke-dashoffset:1}26.6667%,100%{stroke-dashoffset:0}} .p5{stroke-dasharray:1;stroke-dashoffset:0;animation:draw5 6s linear infinite;}@media(prefers-reduced-motion:reduce){.mark,path{animation:none!important;stroke-dashoffset:0!important;opacity:1!important}}</style>
+<g class="mark" fill="none" stroke="#0031e5" stroke-linecap="round" stroke-linejoin="round">
+<path class="p0" pathLength="1" stroke-width="5" d="M528 209 L250 366 L543 536 L825 374 L674 290 L537 369"/>
+<path class="p1" pathLength="1" stroke-width="5" d="M246 374 L246 701 L538 869 L538 672 L417 612"/>
+<path class="p2" pathLength="1" stroke-width="5" d="M834 383 L549 546 L549 870 L827 700 L827 546 L695 626"/>
+<path class="p3" pathLength="1" stroke-width="1.5" d="M250 366 L825 377"/>
+<path class="p4" pathLength="1" stroke-width="1.5" d="M246 701 L544 543 L827 700"/>
+<path class="p5" pathLength="1" stroke-width="5" d="M246 374 L540 546"/>
+</g>
+</svg>

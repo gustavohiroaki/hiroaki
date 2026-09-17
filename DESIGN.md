@@ -106,7 +106,7 @@ Sem sombras de caixas nem cartões flutuantes. Profundidade vem de sobreposiçã
 
 ## Shapes
 
-Predominam cantos retos, separadores de 1px e recortes retangulares. O monograma em `/brand/mark.webp` deriva do PNG original e conserva seu desenho angular isométrico. Ícones Lucide acompanham a geometria por traços. Os pequenos pontos circulares das prévias de janela são uma exceção localizada, não um sistema de botões arredondados.
+Predominam cantos retos, separadores de 1px e recortes retangulares. O componente `src/components/BrandMark.tsx` reconstrói o monograma fornecido com seis caminhos SVG editáveis, preservando o desenho angular isométrico e herdando a cor prata das aplicações do site. Ícones Lucide acompanham a geometria por traços. Os pequenos pontos circulares das prévias de janela são uma exceção localizada, não um sistema de botões arredondados.
 
 ## Components
 
@@ -118,7 +118,7 @@ Predominam cantos retos, separadores de 1px e recortes retangulares. O monograma
 
 **Leitura e prévias.** Títulos de seção combinam Gruppo e ponto azul. Artigos em linhas usam separadores; prévias de projetos reproduzem pequenas interfaces, sem funcionar como aplicações independentes. Tags técnicas são retangulares, com borda de 1px e texto pequeno. Não há formulários nesta implementação.
 
-**Acessibilidade e movimento.** Link de salto para o conteúdo, foco visível de 2px com afastamento de 6px, rótulos nos controles e foco no conteúdo após mudança de rota. Entradas usam `cubic-bezier(0.16, 1, 0.3, 1)`: rota 0.45s, revelação ao entrar na viewport 0.8s, texto do hero 0.95s, monograma 1.4s e foto 1.5s. Hover de fotos dura cerca de 0.7–1.2s; estados de controles, 0.2–0.35s. `prefers-reduced-motion` desativa animações, transições e rolagem suave; também remove transformações de hover das imagens explicitamente contempladas no CSS. O componente de revelação mantém conteúdo visível sem observação. Estes são comportamentos registrados no código, não uma declaração de auditoria de conformidade.
+**Acessibilidade e movimento.** Link de salto para o conteúdo, foco visível de 2px com afastamento de 6px, rótulos nos controles e foco no conteúdo após mudança de rota. Entradas usam `cubic-bezier(0.16, 1, 0.3, 1)`: rota 0.32s em um template que remonta a cada navegação, revelação ao entrar na viewport 0.8s, texto do hero 0.95s e foto 1.5s. O monograma da Home desenha os caminhos uma vez (até 1.74s) e permanece completo, sem loop. Menu tem entrada escalonada limitada a 125ms; filtros e fotos ampliadas usam transições de opacidade de 180–220ms. Hover de fotos dura cerca de 0.7–1.2s; estados de controles, 0.2–0.35s. `prefers-reduced-motion` desativa animações, transições e rolagem suave; também remove transformações de hover das imagens explicitamente contempladas no CSS. O componente de revelação mantém conteúdo visível sem observação. Estes são comportamentos registrados no código, não uma declaração de auditoria de conformidade.
 
 ## Do's and Don'ts
 
@@ -128,3 +128,11 @@ Predominam cantos retos, separadores de 1px e recortes retangulares. O monograma
 - **Do:** conservar estados de teclado, nomes acessíveis e tratamento de movimento reduzido ao expandir componentes.
 - **Don't:** redesenhar o monograma, substituir Gruppo ou apresentar Metropolis como a Gotham original.
 - **Don't:** transformar todas as seções em cartões iguais, adicionar sombras flutuantes, gradientes decorativos ou arredondamentos generalizados.
+
+### Abertura do site
+
+Na Home, a marca se desenha no centro por até 1,68s, faz uma pausa de cerca de 420ms e então se desloca e ajusta sua escala por 1,2s até coincidir com a marca do hero. O fundo desaparece durante esse movimento. A posição final é medida na tela, inclusive no celular. Outras rotas de entrada mantêm o fade de 3,3s. A abertura não se repete na navegação interna, não intercepta cliques, desaparece mesmo sem JavaScript e é omitida com movimento reduzido ; Tab e Escape encerram a abertura explicitamente. Ajustes de viewport, restauração de foco e rolagem automática não cancelam a sequência. O desenho reinicia após a hidratação para que carregamentos lentos também mostrem a animação completa.
+
+Durante o deslocamento, a marca da abertura usa coordenadas do documento, acompanhando a rolagem junto com o destino no hero. Somente o fundo da abertura permanece fixo à viewport.
+
+A seção “Construir. Observar. Descobrir.” inclui a foto local de câmera na coluna lateral, com dimensões intrínsecas e identificação como referência. No celular a foto passa acima do texto, com recorte de 320px de altura.

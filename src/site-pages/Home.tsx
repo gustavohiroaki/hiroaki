@@ -1,3 +1,4 @@
+import { BrandMark } from "../components/BrandMark";
 import Link from "next/link";
 import { ArrowUpRight, ArrowDown, Plus } from "lucide-react";
 import { profile } from "../data/profile";
@@ -32,7 +33,7 @@ export default function Home() {
               Explore meu olhar <ArrowUpRight size={20} />
             </Link>
           </div>
-          <img className="hero-mark" src="/brand/mark.webp" alt="" />
+          <BrandMark className="hero-mark" animated />
         </div>
             <Link href="/photography" className="hero-photo">
           <img src={photos[0].image} alt={photos[0].alt} fetchPriority="high" />
@@ -56,9 +57,22 @@ export default function Home() {
       </section>
       <section id="intro" className="intro-section section-shell">
         <Reveal className="intro-grid">
-          <div className="section-side">
-            <span>Olá, eu sou o Gustavo.</span>
-            <Plus size={22} />
+          <div className="intro-aside">
+            <div className="section-side">
+              <span>Olá, eu sou o Gustavo.</span>
+              <Plus size={22} />
+            </div>
+            <figure className="intro-photo">
+              <img
+                src={personalImages.camera}
+                alt="Câmera fotográfica e lentes sobre uma superfície escura"
+                width={1600}
+                height={2000}
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>Fotografia de referência · Unsplash</figcaption>
+            </figure>
           </div>
           <div>
             <h2>
@@ -187,7 +201,7 @@ export default function Home() {
         ))}
       </section>
       <section className="blue-outro">
-        <img src="/brand/mark.webp" alt="" />
+        <BrandMark />
         <div>
           <p>O próximo assunto pode ser qualquer um.</p>
           <h2>Vamos trocar ideias?</h2>

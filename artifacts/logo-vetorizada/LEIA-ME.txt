@@ -1,0 +1,11 @@
+Logo reconstruída com caminhos vetoriais editáveis.
+Cor: #0031E5. Fundo claro: #F1F5FE. Prancheta: 1080 × 1080.
+logo.svg: vetor estático com fundo transparente.
+logo-fundo-claro.svg: vetor estático com fundo original.
+logo-animada.svg: animação CSS vetorial, fundo transparente.
+logo-animada-fundo-claro.svg: animação CSS vetorial, fundo claro.
+SVG animado: abrir em navegador; editores gráficos podem mostrar somente a logo estática. Respeita preferência de movimento reduzido.
+MP4: 1080 × 1080, 30 fps, 6 segundos, sem áudio.
+GIF: 540 × 540, 20 fps, repetição contínua.
+A animação desenha os contornos, revela as linhas finas, mantém a logo e desaparece para repetir.
+Gerar.py permite ajustar pontos, espessuras e tempos (Python 3, Pillow e FFmpeg).

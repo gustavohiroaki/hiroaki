@@ -44,6 +44,8 @@ for (const [device, width, height] of [
         .map((i) => i.src),
       h1: document.querySelector("h1")?.textContent,
     }));
+    if (route === "/" && await page.locator("#intro img").count() !== 1)
+      errors.push(`${device}: missing introduction photograph`);
     if (result.overflow || result.images.length || !result.h1)
       errors.push({ device, route, ...result });
     if (device !== "tablet")
@@ -96,6 +98,23 @@ for (const [device, width, height] of [
     errors.push(`${device}: contact anchor out of view (${contactTop})`);
   await page.close();
 }
+// Verify actual motion and template remounts separately from reduced-motion layout checks.
+const motion = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+motion.on("pageerror", (e) => errors.push(`motion: ${e.message}`));
+await motion.goto("http://localhost:5173");
+if (await motion.locator(".hero-mark path").count() !== 6) errors.push("Vector logo missing");
+if (await motion.locator(".hero-mark path").first().evaluate(el => getComputedStyle(el).animationName) !== "brand-draw") errors.push("Logo drawing missing");
+await motion.evaluate(() => { window.__routeElement = document.querySelector(".route-enter"); });
+await motion.locator(".desktop-nav").getByRole("link", { name: "Photography", exact: true }).click();
+await motion.waitForURL("**/photography");
+if (!await motion.evaluate(() => window.__routeElement !== document.querySelector(".route-enter"))) errors.push("Route template did not remount");
+if (await motion.locator(".route-enter").evaluate(el => getComputedStyle(el).animationName) !== "route-in") errors.push("Route transition missing");
+await motion.goBack();
+await motion.waitForURL("http://localhost:5173/");
+await motion.emulateMedia({ reducedMotion: "reduce" });
+if (await motion.locator(".hero-mark path").first().evaluate(el => getComputedStyle(el).animationName) !== "none") errors.push("Logo ignores reduced motion");
+if (await motion.locator(".route-enter").evaluate(el => getComputedStyle(el).animationName) !== "none") errors.push("Route ignores reduced motion");
+await motion.close();
 await browser.close();
 console.log(
   JSON.stringify({ errors, routes: routes.length, viewports: 3 }, null, 2),

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080" role="img" aria-labelledby="title">
+<title id="title">Logo geométrica azul</title>
+<g class="mark" fill="none" stroke="#0031e5" stroke-linecap="round" stroke-linejoin="round">
+<path class="p0" pathLength="1" stroke-width="5" d="M528 209 L250 366 L543 536 L825 374 L674 290 L537 369"/>
+<path class="p1" pathLength="1" stroke-width="5" d="M246 374 L246 701 L538 869 L538 672 L417 612"/>
+<path class="p2" pathLength="1" stroke-width="5" d="M834 383 L549 546 L549 870 L827 700 L827 546 L695 626"/>
+<path class="p3" pathLength="1" stroke-width="1.5" d="M250 366 L825 377"/>
+<path class="p4" pathLength="1" stroke-width="1.5" d="M246 701 L544 543 L827 700"/>
+<path class="p5" pathLength="1" stroke-width="5" d="M246 374 L540 546"/>
+</g>
+</svg>

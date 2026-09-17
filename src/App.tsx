@@ -4,6 +4,8 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu, X, ArrowUp } from "lucide-react";
+import { SiteOpening } from "./components/SiteOpening";
+import { BrandMark } from "./components/BrandMark";
 import { profile } from "./data/profile";
 
 const navigation = [["/", "Home"], ["/photography", "Photography"], ["/projects", "Projects"], ["/blog", "Blog"], ["/about", "About"], ["/resume", "Resume"]] as const;
@@ -47,14 +49,15 @@ export default function App({ children }: { children: ReactNode }) {
 
   const isActive = (to: string) => to === "/" ? pathname === "/" : pathname.startsWith(to);
   return <>
+    <SiteOpening />
     <a className="skip-link" href="#main">Pular para o conteúdo</a>
     <header className="site-header">
-      <Link className="wordmark" href="/" aria-label="Gustavo Hiroaki — Home"><img src="/brand/mark.webp" alt="" width="36" height="42" /><span>GUSTAVO HIROAKI</span></Link>
-      <nav className="desktop-nav" aria-label="Navegação principal">{navigation.map(([to, label]) => <Link key={to} className={isActive(to) ? "active" : ""} href={to}>{label}</Link>)}</nav>
+      <Link className="wordmark" href="/" aria-label="Gustavo Hiroaki — Home"><BrandMark /><span>GUSTAVO HIROAKI</span></Link>
+      <nav className="desktop-nav" aria-label="Navegação principal">{navigation.map(([to, label]) => <Link key={to} className={isActive(to) ? "active" : ""} href={to} aria-current={isActive(to) ? "page" : undefined}>{label}</Link>)}</nav>
       <button className="menu-toggle" ref={menuButton} aria-label={open ? "Fechar menu" : "Abrir menu"} aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
     </header>
-    {open && <div className="mobile-menu" id="mobile-nav" ref={menuPanel} role="dialog" aria-modal="true" aria-label="Menu de navegação"><nav>{navigation.map(([to, label], index) => <Link key={to} href={to} onClick={() => setOpen(false)}><span className="small">0{index + 1}</span>{label}<ArrowUpRight /></Link>)}</nav><p>Software, fotografia<br />e tudo pelo caminho.</p><img src="/brand/mark.webp" alt="" /></div>}
-    <main id="main" tabIndex={-1} className="route-enter">{children}</main>
-    <footer className="site-footer"><div className="footer-top"><Link className="wordmark" href="/"><img src="/brand/mark.webp" alt="" width="40" height="46" /><span>GUSTAVO HIROAKI</span></Link><p>Um olhar curioso.<br />Muitas possibilidades.</p><div className="social-links">{profile.socials.map((social) => social.url ? <a key={social.name} href={social.url} target="_blank" rel="noreferrer">{social.name}<ArrowUpRight size={14} /></a> : <span key={social.name} className="social-placeholder" title="Perfil ainda não informado">{social.name}<span>em breve</span></span>)}</div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Gustavo Hiroaki</span><span>Feito com intenção e curiosidade.</span><button onClick={() => window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" })}>Voltar ao topo <ArrowUp size={16} /></button></div></footer>
+    {open && <div className="mobile-menu" id="mobile-nav" ref={menuPanel} role="dialog" aria-modal="true" aria-label="Menu de navegação"><nav>{navigation.map(([to, label], index) => <Link key={to} href={to} aria-current={isActive(to) ? "page" : undefined} onClick={() => setOpen(false)}><span className="small">0{index + 1}</span>{label}<ArrowUpRight /></Link>)}</nav><p>Software, fotografia<br />e tudo pelo caminho.</p><BrandMark /></div>}
+    <main id="main" tabIndex={-1}>{children}</main>
+    <footer className="site-footer"><div className="footer-top"><Link className="wordmark" href="/"><BrandMark /><span>GUSTAVO HIROAKI</span></Link><p>Um olhar curioso.<br />Muitas possibilidades.</p><div className="social-links">{profile.socials.map((social) => social.url ? <a key={social.name} href={social.url} target="_blank" rel="noreferrer">{social.name}<ArrowUpRight size={14} /></a> : <span key={social.name} className="social-placeholder" title="Perfil ainda não informado">{social.name}<span>em breve</span></span>)}</div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Gustavo Hiroaki</span><span>Feito com intenção e curiosidade.</span><button onClick={() => window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" })}>Voltar ao topo <ArrowUp size={16} /></button></div></footer>
   </>;
 }

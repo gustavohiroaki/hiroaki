@@ -1,3 +1,4 @@
+import { BrandMark } from "../components/BrandMark";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { posts } from "../data/posts";
@@ -36,7 +37,7 @@ export default function Blog() {
               </div>
             ) : (
               <div className="blog-code-art">
-                <img src="/brand/mark.webp" alt="" />
+                <BrandMark />
                 <span>Less, but better.</span>
               </div>
             )}
