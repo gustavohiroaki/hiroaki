@@ -1,6 +1,6 @@
 # Gustavo Hiroaki — portfólio pessoal
 
-Site estático em Vite, React, TypeScript e Tailwind CSS. Sem backend, banco, autenticação, CMS ou APIs em tempo de execução.
+Site estático em Next.js, React, TypeScript e Tailwind CSS. Sem backend, banco, autenticação, CMS ou APIs em tempo de execução.
 
 ## Executar
 
@@ -9,18 +9,19 @@ npm install
 npm run dev
 ```
 
-O Vite exibe o endereço local. Para produção:
+O Next.js exibe o endereço local. Para produção:
 
 ```sh
 npm run build
-npm run preview
+npm start
 ```
 
-A pasta `dist/` contém o site pronto para hospedagem estática. Configure a hospedagem para servir `index.html` nas rotas não correspondentes a arquivos (fallback de SPA), incluindo `/blog/:slug`. Não há publicação remota configurada.
+A aplicação usa o App Router do Next.js, com páginas estáticas e artigos em `/blog/[slug]`. O comando `npm run build` prepara a aplicação para `npm start` ou para deploy em uma hospedagem compatível com Next.js. Não há publicação remota configurada.
 
 ## Editar conteúdo
 
 - `src/data/profile.ts`: apresentação, interesses, e-mail e redes sociais. URLs vazias aparecem como “em breve”.
+- `src/site-pages/`: componentes de página reutilizados pelas rotas do App Router em `app/`.
 - `src/data/photos.ts`: fotos, miniaturas, texto alternativo, título, local, categoria, data, câmera opcional e fonte.
 - `src/assets/photos/`: imagens WebP locais. Substitua os arquivos ou altere os imports. `thumbnail` é a versão pequena usada no `srcSet` e nas prévias.
 - `src/data/projects.ts`: projetos, stack, ano, descrição e URLs. As três interfaces são demonstrações, não trabalhos reais alegados.

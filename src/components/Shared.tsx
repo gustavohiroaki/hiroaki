@@ -1,5 +1,6 @@
+"use client";
 import { useEffect, useRef, type ReactNode } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import type { Project } from "../data/projects";
 import { photos } from "../data/photos";
@@ -13,7 +14,7 @@ export function TextLink({
   className?: string;
 }) {
   return (
-    <Link className={`text-link ${className}`} to={to}>
+    <Link className={`text-link ${className}`} href={to}>
       {children}
       <ArrowUpRight size={18} />
     </Link>

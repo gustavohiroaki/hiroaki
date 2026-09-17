@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { posts } from "../data/posts";
 import { PageIntro } from "../components/Shared";
@@ -11,7 +11,7 @@ export default function Blog() {
         description="Um caderno aberto sobre software, fotografia e tudo que desperta curiosidade."
         aside="Textos de demonstração"
       />
-      <Link className="blog-feature" to={`/blog/${first.slug}`}>
+      <Link className="blog-feature" href={`/blog/${first.slug}`}>
         <div className="image-link">
           <img src={first.image} alt={first.alt} fetchPriority="high" />
         </div>
@@ -29,7 +29,7 @@ export default function Blog() {
       </Link>
       <div className="blog-grid">
         {posts.slice(1).map((post) => (
-          <Link className="blog-post" key={post.slug} to={`/blog/${post.slug}`}>
+          <Link className="blog-post" key={post.slug} href={`/blog/${post.slug}`}>
             {post.image ? (
               <div className="blog-thumbnail">
                 <img src={post.image} alt={post.alt} loading="lazy" />

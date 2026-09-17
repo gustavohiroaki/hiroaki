@@ -1,14 +1,13 @@
-import { Link, useParams } from "react-router-dom";
+import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { posts } from "../data/posts";
-export default function Article() {
-  const { slug } = useParams();
+export default function Article({ slug }: { slug: string }) {
   const post = posts.find((p) => p.slug === slug);
   if (!post)
     return (
       <div className="not-found">
         <h1>Texto não encontrado.</h1>
-        <Link className="text-link" to="/blog">
+        <Link className="text-link" href="/blog">
           Voltar ao journal <ArrowLeft />
         </Link>
       </div>
@@ -17,7 +16,7 @@ export default function Article() {
   return (
     <article className="article-page">
       <div className="article-header">
-        <Link className="text-link" to="/blog">
+        <Link className="text-link" href="/blog">
           <ArrowLeft size={17} /> Voltar ao journal
         </Link>
         <div className="post-meta">
@@ -50,7 +49,7 @@ export default function Article() {
         <blockquote>
           Continuar curioso é uma boa maneira de continuar aprendendo.
         </blockquote>
-        <Link className="article-next" to={`/blog/${next.slug}`}>
+        <Link className="article-next" href={`/blog/${next.slug}`}>
           <span className="small muted">Próxima leitura</span>
           <h2>{next.title}</h2>
           <ArrowUpRight />

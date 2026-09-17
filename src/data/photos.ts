@@ -10,6 +10,9 @@ import tokyoSmall from "../assets/photos/tokyo-small.webp";
 import forestSmall from "../assets/photos/forest-small.webp";
 import mountainsSmall from "../assets/photos/mountains-small.webp";
 import portraitSmall from "../assets/photos/portrait-small.webp";
+import type { StaticImageData } from "next/image";
+
+const asset = (value: StaticImageData) => value.src;
 export type Photo = {
   id: string;
   image: string;
@@ -25,8 +28,8 @@ export type Photo = {
 export const photos: Photo[] = [
   {
     id: "fuji",
-    image: fuji,
-    thumbnail: fujiSmall,
+    image: asset(fuji),
+    thumbnail: asset(fujiSmall),
     title: "Entre o céu e o silêncio",
     location: "Monte Fuji, Japão",
     category: "Japan",
@@ -36,8 +39,8 @@ export const photos: Photo[] = [
   },
   {
     id: "tokyo",
-    image: tokyo,
-    thumbnail: tokyoSmall,
+    image: asset(tokyo),
+    thumbnail: asset(tokyoSmall),
     title: "A cidade não espera",
     location: "Tóquio, Japão",
     category: "Street",
@@ -47,8 +50,8 @@ export const photos: Photo[] = [
   },
   {
     id: "mountains",
-    image: mountains,
-    thumbnail: mountainsSmall,
+    image: asset(mountains),
+    thumbnail: asset(mountainsSmall),
     title: "Lá fora, tudo muda",
     location: "Montanhas",
     category: "Landscape",
@@ -58,8 +61,8 @@ export const photos: Photo[] = [
   },
   {
     id: "forest",
-    image: forest,
-    thumbnail: forestSmall,
+    image: asset(forest),
+    thumbnail: asset(forestSmall),
     title: "Um pouco mais devagar",
     location: "Entre as árvores",
     category: "Nature",
@@ -69,8 +72,8 @@ export const photos: Photo[] = [
   },
   {
     id: "portrait",
-    image: portrait,
-    thumbnail: portraitSmall,
+    image: asset(portrait),
+    thumbnail: asset(portraitSmall),
     title: "Histórias em um olhar",
     location: "Retrato de exemplo",
     category: "Portrait",
@@ -79,7 +82,7 @@ export const photos: Photo[] = [
     source: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
   },
 ];
-export const personalImages = { camera, guitar };
+export const personalImages = { camera: asset(camera), guitar: asset(guitar) };
 export const categories = [
   "All",
   "Japan",

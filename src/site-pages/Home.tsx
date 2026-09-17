@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ArrowUpRight, ArrowDown, Plus } from "lucide-react";
 import { profile } from "../data/profile";
 import { photos, personalImages } from "../data/photos";
@@ -28,13 +28,13 @@ export default function Home() {
                 <p key={r}>{r}</p>
               ))}
             </div>
-            <Link to="/photography" className="primary-button">
+            <Link href="/photography" className="primary-button">
               Explore meu olhar <ArrowUpRight size={20} />
             </Link>
           </div>
           <img className="hero-mark" src="/brand/mark.webp" alt="" />
         </div>
-        <Link to="/photography" className="hero-photo">
+            <Link href="/photography" className="hero-photo">
           <img src={photos[0].image} alt={photos[0].alt} fetchPriority="high" />
           <div className="hero-photo-top">
             <span>Um mundo para observar.</span>
@@ -87,7 +87,7 @@ export default function Home() {
         <div className="home-photo-grid">
           {[photos[1], photos[2]].map((p, i) => (
             <Reveal key={p.id} className={`photo-story photo-story-${i}`}>
-              <Link to="/photography" className="image-link">
+              <Link href="/photography" className="image-link">
                 <img src={p.image} alt={p.alt} loading="lazy" />
                 <span className="image-hover">
                   Explorar fotografias <ArrowUpRight />
@@ -153,7 +153,7 @@ export default function Home() {
           </div>
           <TextLink to="/projects">Todos os projetos</TextLink>
         </div>
-        <Link to="/projects" className="featured-project">
+        <Link href="/projects" className="featured-project">
           <ProjectPreview project={projects[0]} />
           <div className="featured-project-copy">
             <span className="small muted">
@@ -178,7 +178,7 @@ export default function Home() {
           <TextLink to="/blog">Abrir o journal</TextLink>
         </div>
         {posts.slice(0, 2).map((p) => (
-          <Link className="journal-row" key={p.slug} to={`/blog/${p.slug}`}>
+          <Link className="journal-row" key={p.slug} href={`/blog/${p.slug}`}>
             <span className="small muted">{p.category}</span>
             <h3>{p.title}</h3>
             <span className="small muted">{p.date}</span>

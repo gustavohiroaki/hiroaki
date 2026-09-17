@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, X, Maximize2 } from "lucide-react";
 import { photos, categories, type Photo } from "../data/photos";

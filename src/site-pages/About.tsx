@@ -1,20 +1,21 @@
+"use client";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import { profile } from "../data/profile";
 import { photos, personalImages } from "../data/photos";
 import { PageIntro, TextLink, Reveal } from "../components/Shared";
 export default function About() {
-  const location = useLocation();
+  const pathname = usePathname();
   useEffect(() => {
-    if (location.hash !== "#contact") return;
+    if (pathname !== "/about" || window.location.hash !== "#contact") return;
     const frame = requestAnimationFrame(() => {
       document
         .getElementById("contact")
         ?.scrollIntoView({ behavior: "instant" });
     });
     return () => cancelAnimationFrame(frame);
-  }, [location.hash]);
+  }, [pathname]);
   return (
     <div className="about-page">
       <div className="page-shell">
